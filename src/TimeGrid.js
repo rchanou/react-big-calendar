@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
 import { findDOMNode } from 'react-dom';
+import groupBy from 'lodash/groupBy';
+import values from 'lodash/values';
 
 import dates from './utils/dates';
 import localizer from './localizer'
@@ -25,6 +27,8 @@ export default class TimeGrid extends Component {
 
   static propTypes = {
     events: React.PropTypes.array.isRequired,
+
+    groups: React.PropTypes.array,
 
     step: React.PropTypes.number,
     start: React.PropTypes.instanceOf(Date),
@@ -135,6 +139,7 @@ export default class TimeGrid extends Component {
   render() {
     let {
         events
+      , groups
       , start
       , end
       , width
@@ -147,7 +152,7 @@ export default class TimeGrid extends Component {
     let range = dates.range(start, end, 'day')
 
     this.slots = range.length;
-
+    
     let allDayEvents = []
       , rangeEvents = [];
 
@@ -172,6 +177,17 @@ export default class TimeGrid extends Component {
 
     let gutterRef = ref => this._gutters[1] = ref && findDOMNode(ref);
 
+    let eventEls;
+    if (groups){
+      const groupedEvents = values(groupBy(events, 'group'));
+      console.log(groupedEvents)
+      eventEls = groupedEvents.map(
+        groupEvents => this.renderEvents(range, groupEvents, this.props.now)
+      );
+    } else {
+      eventEls = this.renderEvents(range, rangeEvents, this.props.now)
+    }
+
     return (
       <div className='rbc-time-view'>
 
@@ -188,7 +204,7 @@ export default class TimeGrid extends Component {
             className='rbc-time-gutter'
           />
 
-          {this.renderEvents(range, rangeEvents, this.props.now)}
+          {eventEls}
 
         </div>
       </div>

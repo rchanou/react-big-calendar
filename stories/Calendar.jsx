@@ -79,6 +79,19 @@ storiesOf('module.Calendar.week', module)
     )
   })
 
+  .add('day view, grouped events', () => {
+    return (
+      <div style={{height: 600}}>
+        <Calendar
+          defaultView={Calendar.Views.DAY}
+          defaultDate={new Date()}
+          groups={['Group A', 'Group B']}
+          events={createEvents(1)}
+        />
+      </div>
+    )
+  })
+
   .add('selectable', () => {
     return (
       <div style={{height: 600}}>
