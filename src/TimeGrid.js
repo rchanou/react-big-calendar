@@ -177,15 +177,14 @@ export default class TimeGrid extends Component {
 
     let gutterRef = ref => this._gutters[1] = ref && findDOMNode(ref);
 
-    let eventEls;
+    let renderedEvents;
     if (groups){
-      const groupedEvents = values(groupBy(events, 'group'));
-      console.log(groupedEvents)
-      eventEls = groupedEvents.map(
-        groupEvents => this.renderEvents(range, groupEvents, this.props.now)
+      const eventGroups = values(groupBy(events, 'group'));
+      renderedEvents = eventGroups.map(
+        eventGroup => this.renderEvents(range, eventGroup, this.props.now)
       );
     } else {
-      eventEls = this.renderEvents(range, rangeEvents, this.props.now)
+      renderedEvents = this.renderEvents(range, rangeEvents, this.props.now);
     }
 
     return (
@@ -204,8 +203,7 @@ export default class TimeGrid extends Component {
             className='rbc-time-gutter'
           />
 
-          {eventEls}
-
+          {renderedEvents}
         </div>
       </div>
     );
