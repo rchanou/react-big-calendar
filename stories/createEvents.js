@@ -83,25 +83,25 @@ export default function createEvents(idx = 0, date = new Date()) {
         'title': 'Event 6',
         'start': new Date(y, m, d, 10, 0, 0, 0),
         'end': new Date(y, m, d, 11, 0, 0, 0),
-        'group': 'Group A'
+        'group': 'Group B'
       },
       {
         'title': 'Event 7',
         'start': new Date(y, m, d, 9, 30, 0, 0),
         'end': new Date(y, m, d, 10, 30, 0, 0),
-        'group': 'Group A'
+        'group': 'Group B'
       },
       {
         'title': 'Event 8',
         'start': new Date(y, m, d, 9, 30, 0, 0),
         'end': new Date(y, m, d, 10, 30, 0, 0),
-        'group': 'Group A'
+        'group': 'Group C'
       },
       {
         'title': 'Event 9',
         'start': new Date(y, m, d, 9, 30, 0, 0),
         'end': new Date(y, m, d, 10, 30, 0, 0),
-        'group': 'Group A'
+        'group': 'Group C'
       },
       {
         'title': 'Event 10',
@@ -131,13 +131,13 @@ export default function createEvents(idx = 0, date = new Date()) {
         'title': 'Event 14',
         'start': new Date(y, m, d, 12, 0, 0, 0),
         'end': new Date(y, m, d, 13, 0, 0, 0),
-        'group': 'Group B'
+        'group': 'Group C'
       },
       {
         'title': 'Event 15',
         'start': new Date(y, m, d, 6, 30, 0, 0),
         'end': new Date(y, m, d, 8, 0, 0, 0),
-        'group': 'Group B'
+        'group': 'Group C'
       },
     ],
     [

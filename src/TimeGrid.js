@@ -179,7 +179,7 @@ export default class TimeGrid extends Component {
 
     let renderedEvents;
     if (groups){
-      const eventGroups = values(groupBy(events, 'group'));
+      const eventGroups = values(groupBy(rangeEvents, 'group'));
       renderedEvents = eventGroups.map(
         eventGroup => this.renderEvents(range, eventGroup, this.props.now)
       );
